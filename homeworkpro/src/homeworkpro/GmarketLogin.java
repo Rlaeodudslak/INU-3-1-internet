@@ -7,10 +7,19 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.io.IOException; 
+import org.jsoup.Jsoup; 
+import org.jsoup.nodes.Document; 
+import org.jsoup.nodes.Element; 
+import org.jsoup.select.Elements;
+
+
+
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -108,7 +117,7 @@ public class GmarketLogin {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(myResult);
+		//System.out.println(myResult);
 		return myResult;
 	}
 
@@ -122,7 +131,7 @@ public class GmarketLogin {
 			HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 			con.setRequestProperty("Connection", "keep-alive");
 			con.setRequestProperty("Cookie", myCookies);
-			System.out.println(myCookies);
+			//System.out.println(myCookies);
 			StringBuffer buffer = new StringBuffer();
 
 			con.setDoOutput(true);
@@ -147,7 +156,7 @@ public class GmarketLogin {
 				builder.append(str + "\n");
 			}
 			myResult = builder.toString();
-			System.out.print(myResult);
+			//System.out.print(myResult);
 
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
@@ -158,11 +167,26 @@ public class GmarketLogin {
 		}
 		
 		
-		// 크롤링 
 		
-		
-		
-		//
 		return myResult;
+	}
+	
+	public List<String> crawll( String htmltext ) {
+		List<String> response = new ArrayList<String>();
+		Document doc = null; 
+		
+		doc = Jsoup.parse(htmltext); 
+		
+		// 주요 뉴스로 나오는 태그를 찾아서 가져오도록 한다. 
+
+
+		for(Element e : doc.select("li.seller_info").select("a")) {
+			String text = e.text();
+			if(!text.equals("문의하기")) {
+				response.add(text);
+				System.out.println(text);
+			}
+		}
+		return response;
 	}
 }

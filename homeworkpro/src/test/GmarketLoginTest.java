@@ -12,6 +12,9 @@ public class GmarketLoginTest {
 		
 		GmarketLogin object = new GmarketLogin();
 		object.login(id,password);
-		Assert.assertEquals(object.myg(), "123");
+		String myresult = object.myg();
+		
+		object.crawll(myresult);
+		
 	}
 }
