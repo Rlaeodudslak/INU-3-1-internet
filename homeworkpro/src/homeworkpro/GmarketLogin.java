@@ -16,7 +16,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class GmarketLogin {
 
-	private String myCookies;
+	private String myCookies = "";
 
 	public String login(String id, String password) {
 		URL obj;
@@ -27,8 +27,10 @@ public class GmarketLogin {
 			List<String> tokens = Crawler.GetGmarketToken();
 			String cookieToken = tokens.get(0);
 			String htmlToken = tokens.get(1);
+			
 			pList.put("id", id);
-			pList.put("password", password);
+			pList.put("pwd", password);
+			pList.put("member_type", "MEM");
 			pList.put("__RequestVerificationToken", htmlToken);
 			pList.put("url", "https://myg.gmarket.co.kr");
 			pList.put("command", "login");
@@ -47,7 +49,7 @@ public class GmarketLogin {
 			cookie += "pcidx=E46E2E360405306169D8F0D6E46BF537839A8D58FEF63D8F8EB1610F8D11754D;";
 			cookie += "shipnation=KR;";
 			cookie += "charset=enUS;";
-			cookie += "mgim=mgim;";
+			con.setRequestProperty("Connection", "keep-alive");
 			con.setRequestProperty("Cookie", cookie);
 			con.setRequestProperty("content-type", "application/x-www-form-urlencoded");
 			StringBuffer buffer = new StringBuffer();
@@ -77,14 +79,15 @@ public class GmarketLogin {
 			// --------------------------
 			// http.getResponseCode();
 
-			String cookieTemp = con.getHeaderField("Set-Cookie");
-			if (cookieTemp != null) {
-				myCookies = cookieTemp;
+			String Set_Cookie = "Set-Cookie";
+			if(con.getHeaderFields().containsKey(Set_Cookie)) {
+				myCookies="";
+				List<String> cookieTemp = con.getHeaderFields().get(Set_Cookie);
+				for(int i=0;i<cookieTemp.size();i++) {
+					myCookies +=cookieTemp.get(i) + ";";
+					
+				}
 			}
-
-			System.out.println(con.getResponseCode());
-			System.out.println("cookies");
-			System.out.println(myCookies);
 
 			// --------------------------
 			// 서버에서 전송받기
@@ -117,9 +120,9 @@ public class GmarketLogin {
 
 			obj = new URL("https://myg.gmarket.co.kr/");
 			HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
-			String cookie = "";
+			con.setRequestProperty("Connection", "keep-alive");
 			con.setRequestProperty("Cookie", myCookies);
-			con.setRequestProperty("content-type", "application/x-www-form-urlencoded");
+			System.out.println(myCookies);
 			StringBuffer buffer = new StringBuffer();
 
 			con.setDoOutput(true);
@@ -144,6 +147,7 @@ public class GmarketLogin {
 				builder.append(str + "\n");
 			}
 			myResult = builder.toString();
+			System.out.print(myResult);
 
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
@@ -152,6 +156,13 @@ public class GmarketLogin {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
+		// 크롤링 
+		
+		
+		
+		//
 		return myResult;
 	}
 }
