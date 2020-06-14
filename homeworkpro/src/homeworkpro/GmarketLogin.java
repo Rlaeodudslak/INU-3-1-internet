@@ -177,10 +177,10 @@ public class GmarketLogin {
 		
 		doc = Jsoup.parse(htmltext); 
 		
-		// 주요 뉴스로 나오는 태그를 찾아서 가져오도록 한다. 
+		
 
 
-		for(Element e : doc.select("li.seller_info").select("a")) {
+		for(Element e : doc.select("li.tit_info").select("a")) {
 			String text = e.text();
 			if(!text.equals("문의하기")) {
 				response.add(text);
@@ -189,4 +189,60 @@ public class GmarketLogin {
 		}
 		return response;
 	}
+	
+	public List<String> getList(String id,String password){
+		this.login(id,password);
+		return this.crawll(this.myg());
+	}
+	
+	
+	public List<String> crawlldate( String htmltext ) {
+		List<String> response = new ArrayList<String>();
+		Document doc = null; 
+		
+		doc = Jsoup.parse(htmltext); 
+		
+		
+
+
+		for(Element e : doc.select("div.td_detail")) {
+			String text = e.text();
+			if(!text.contains("기본 배송지")) {
+				response.add(text.substring(0,10));
+				System.out.println(text);
+			}
+		}
+		return response;
+	}
+	
+	public List<String> getListdate(String id,String password){
+		this.login(id,password);
+		return this.crawlldate(this.myg());
+	}
+	
+	
+	public List<String> crawllname( String htmltext ) {
+		List<String> response = new ArrayList<String>();
+		Document doc = null; 
+		
+		doc = Jsoup.parse(htmltext); 
+		
+		
+
+
+		for(Element e : doc.select("li.tit_info").select("a")) {
+			String text = e.text();
+			if(!text.contains("기본 배송지")) {
+				response.add(text);
+				System.out.println(text);
+			}
+		}
+		return response;
+	}
+	
+	public List<String> getListname(String id,String password){
+		this.login(id,password);
+		return this.crawllname(this.myg());
+	}
+	
 }
