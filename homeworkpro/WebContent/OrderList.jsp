@@ -17,9 +17,9 @@ request.setCharacterEncoding("utf-8");
 <body>
 
 <h1>주문내역</h1>
-<%= Crawler.GetGmarketToken() %>
-<%= request.getParameter("id")%>
-<%= request.getParameter("pw")%>
+
+<%= new homeworkpro.GmarketLogin().getListdate(request.getParameter("id"),request.getParameter("pw")) %>
+<%= new homeworkpro.GmarketLogin().getListname(request.getParameter("id"),request.getParameter("pw")) %>
 
 <!-- 변수 정의 -->
 <%!
