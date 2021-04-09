@@ -1,8 +1,9 @@
 package test;
 
-import org.junit.Assert;
-import org.junit.Test;
+
+
 import homeworkpro.GmarketLogin;
+import org.junit.jupiter.api.Test;
 
 public class GmarketLoginTest {
 	@Test

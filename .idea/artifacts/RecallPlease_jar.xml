@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="RecallPlease:jar">
+    <output-path>$PROJECT_DIR$/classes/artifacts/RecallPlease_jar</output-path>
+    <root id="archive" name="RecallPlease.jar">
+      <element id="module-output" name="RecallPlease" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/mysql-connector-java-8.0.20.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/homeworkpro/jsoup-1.13.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$APPLICATION_HOME_DIR$/lib/junit.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/WebContent/WEB-INF/lib/jsoup-1.13.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

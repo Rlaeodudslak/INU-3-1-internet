@@ -3,10 +3,11 @@ package test;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
 
 import homeworkpro.Crawler;
+import org.junit.gen5.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class CrawlerTest {
 	@Test
@@ -15,7 +16,7 @@ public class CrawlerTest {
 		List<String> expected = new ArrayList<String>();
 		expected.add("123");
 		expected.add("123");
-		Assert.assertArrayEquals(test.toArray(),expected.toArray());
+		assertArrayEquals(test.toArray(),expected.toArray());
 	}
 	
 
@@ -25,6 +26,6 @@ public class CrawlerTest {
 		List<String> expected = new ArrayList<String>();
 		expected.add(test.get(0));
 		expected.add("123");
-		Assert.assertArrayEquals(test.toArray(),expected.toArray());
+		assertArrayEquals(test.toArray(),expected.toArray());
 	}
 }
