@@ -1,0 +1,40 @@
+﻿<!-- 로그인 페이지 
+	  요즘 유행하는 다크모드를 쓴 초기 디자인도 이뻤었다
+-->
+
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="Login1.css" />
+</head>
+
+<body>
+<h1>리콜을<br>부탁해</h1>
+
+<form action="OrderList.jsp" method="POST" name="OrderList">
+    <div class="flex-container">
+    <div><input type="button" id="order" value="주문내역 불러오기"></div>
+        <div id="img"><img src="G.jpg"  alt="지마켓"/></div>
+    </div>
+    <div class="input">
+        <label>
+            <input type="text" class="idpw" name="id" placeholder="아이디" size="25">
+        </label>
+        <label>
+            <input type="password" class="idpw" name="pw" maxlength="20" size="25" placeholder="비밀번호는 6자 이상 20자 이하">
+        </label>
+
+        <label id="item">
+            <input id="submit" type="submit" value="로그인">
+        </label>
+    </div>
+</form>
+
+<footer>
+	<p class="footerfont">프로젝트 명 : 인설실 뿌수기</p>
+    <p class="footerfont">제작자 : 임창민, 김대영, 김재훈, 심재서</p>
+</footer>
+</body>
+</html>

@@ -12,27 +12,21 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.io.IOException; 
 import org.jsoup.Jsoup; 
 import org.jsoup.nodes.Document; 
 import org.jsoup.nodes.Element; 
-import org.jsoup.select.Elements;
-
-
-
-
 import javax.net.ssl.HttpsURLConnection;
 
 public class GmarketLogin {
 
 	private String myCookies = "";
 
-	public String login(String id, String password) {
+	public String login(String id, String password) {// g마켓로그인에 토큰이 필요하므로 그 값들을 가져와서 보낸다음 로그인을 함
 		URL obj;
 
 		String myResult = "";
 		try {
-			HashMap<String, String> pList = new HashMap<String, String>();
+			HashMap<String, String> pList = new HashMap<String, String>(); // hashmap = http post 로 보낼 파라미터값 저장
 			List<String> tokens = Crawler.GetGmarketToken();
 			String cookieToken = tokens.get(0);
 			String htmlToken = tokens.get(1);
@@ -121,7 +115,7 @@ public class GmarketLogin {
 		return myResult;
 	}
 
-	public String myg() {
+	public String myg() {// 로그인 성공후 자신의 주문내역페이지로 간다음 그 html 코드를 myresult에 저장
 		URL obj;
 
 		String myResult = "";
@@ -171,7 +165,7 @@ public class GmarketLogin {
 		return myResult;
 	}
 	
-	public List<String> crawll( String htmltext ) {
+	public List<String> crawll( String htmltext ) {// getlistdate과 같이 이용해서 주문내역 페이지 코드중 상품의 주문 날짜만 따로 크롤링함.
 		List<String> response = new ArrayList<String>();
 		Document doc = null; 
 		
@@ -196,7 +190,7 @@ public class GmarketLogin {
 	}
 	
 	
-	public List<String> crawlldate( String htmltext ) {
+	public List<String> crawlldate( String htmltext ) {// getlistname과 같이 이용해서 주문내역 페이지 코드중 상품의 이름만 따로 크롤링함.
 		List<String> response = new ArrayList<String>();
 		Document doc = null; 
 		

@@ -10,7 +10,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.Connection;
 
 public class Crawler {
-	public static List<String> GetGmarketToken() {
+	public static List<String> GetGmarketToken() {// g마켓에 로그인하는데 필요한 쿠키값 정보 긁어오기
 				List<String> response = new ArrayList<>();
 				String url = "https://signinssl.gmarket.co.kr/login/login"; //크롤링할 url지정
 				Document doc = null;        //Document에는 페이지의 전체 소스가 저장된다
