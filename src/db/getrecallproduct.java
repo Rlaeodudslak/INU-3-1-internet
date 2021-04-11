@@ -38,7 +38,7 @@ public class getrecallproduct {
 		//2, db connect info
 		String url= "jdbc:mysql://localhost:3306/testdb?&serverTimezone=UTC";
 		String user = "root";
-		String pw="coldplay96";
+		String pw="password";
 		
 		String SQL="INSERT INTO `testdb`.`recall_product` (`product`, `manufacture`, `url`) "
 				+ "VALUES ('"+Name+"','"+Manu+"','"+Url+"');";
