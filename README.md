@@ -5,7 +5,7 @@
 
 url : http://34.123.205.160:8080/main/
 
-구성 환경 : 구글 클라우드 플랫폼. tomcat9. jsoup크롤링. 지마켓
+구성 환경 : 구글 클라우드 플랫폼. tomcat9. jsoup크롤링. 지마켓. ant build (intellij 내장)
 
 사용 방법 : 지마켓 로그인 -> 주문 내역 확인.
 
